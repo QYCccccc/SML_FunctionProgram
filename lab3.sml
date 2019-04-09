@@ -56,3 +56,40 @@ fun subsetSumOption ([], s) = NONE
 
 val t6 = subsetSumOption([1,2,3,4,5,6], 8);
 
+
+fun p x = 
+    if (x > 4)
+        then false
+    else 
+        true
+
+
+fun exists (f) = 
+    let
+      fun f2 [] = false
+        | f2 (x::L) = 
+            if (f(x))
+                then true
+            else
+                f2 L 
+    in
+      f2
+    end
+
+val t7 = exists p [1,2,3,4,5];
+val t8 = exists p [5,6,7,8];
+
+fun forall (f) = 
+    let
+       fun f2 [] = true
+        | f2(x::L) = 
+            if (f(x))
+                then f2 L
+            else 
+                false
+    in
+      f2
+    end
+
+val t9 = forall p [1,2,3,4];
+val t10 = forall p [1,2,3,4,5];
